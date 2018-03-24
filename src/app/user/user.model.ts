@@ -1,7 +1,8 @@
 export interface User {
-    userId: string;
+    userId?: string;
     email: string;
     username: string;
-    socketId: string;
+    socketId?: string;
+    password?:string;
   }
   

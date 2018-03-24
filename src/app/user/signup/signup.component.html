@@ -1,0 +1,45 @@
+<section>
+  <form class="example-form"
+    [formGroup]="signupForm"
+    (ngSubmit)="onSubmit()">
+    
+    <mat-form-field class="example-full-width">
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email">
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+    
+  <mat-form-field class="example-full-width">
+    <input matInput type="text"  formControlName="username" placeholder="username">
+      <mat-hint>Pleas enter your username</mat-hint>
+      <mat-error>Need for username valid</mat-error>
+   </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input
+        type="password"
+        matInput
+        placeholder="Your password"
+        formControlName="password">
+      <mat-hint>Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <input
+        type="password"
+        matInput
+        placeholder="Confirm Your password"
+        formControlName="passwordConfirm">
+      <mat-hint>Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+     <button *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary" [disabled]="signupForm.invalid">Submit</button>
+     <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  </form>
+  <br/>
+</section>

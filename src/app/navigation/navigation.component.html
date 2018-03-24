@@ -5,8 +5,9 @@
   <span class="example-fill-remaining-space"></span>
   <span *ngIf="!(isAuth$ | async)">
      <a routerLink="/signup" [routerLinkActive]="['active']">Signup</a>
+       |
   </span>
-  |
+
   <span *ngIf="!(isAuth$ | async)">
      <a routerLink="/login" [routerLinkActive]="['active']">Login</a>
   </span>
