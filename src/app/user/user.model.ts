@@ -1,8 +1,10 @@
 export interface User {
-    userId?: string;
+    id?: string;
     email: string;
     username: string;
     socketId?: string;
     password?:string;
+    status?:boolean;
+    created?: Date; 
   }
   

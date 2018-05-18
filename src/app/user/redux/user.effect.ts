@@ -21,13 +21,18 @@ import * as UserActionTypes from "./user.actions";
 import * as UiActionTypes from './../../shared/ui.actions';
 import * as fromRoot from './../../app.reducer';
 import { User } from '../user.model';
+import { Router } from '@angular/router';
+import { SocketService } from "../../messanger/socket.service";
+import { tap } from "rxjs/operators";
 
 @Injectable()
 export class UserEffects {
 
   constructor(private actions$: Actions,
     private userService: UserService,
-    private store: Store<fromRoot.State>) {
+    private store: Store<fromRoot.State>,
+    private router: Router,
+    private socketIo: SocketService) {
   }
 
   @Effect()
@@ -38,14 +43,18 @@ export class UserEffects {
         email:action.payload.email,
         password:action.payload.password})
         .map((user) => {
-          localStorage.setItem('token',user.json().token)
+          localStorage.setItem('token',user.json().token);
+          this.router.navigate(['/messenger']);
           return new UserActionTypes.AuthenticationSuccessAction(user.json())
         })
         .do(()=> this.store.dispatch(new UiActionTypes.StopLoading()))
-        .catch(error => Observable.of(new UserActionTypes.AuthenticatedError({error: error})));
-        
+        .catch(error => Observable.of(new UserActionTypes.AuthenticatedError({error: error.message})));
     });
 
-
-
+    @Effect({ dispatch: false })
+    unAuthActions$ = this.actions$
+      .ofType<UserActionTypes.SetUnauthenticated>(UserActionTypes.SET_UNAUTHENTICATED)
+      .do(action => {
+        this.socketIo.logout();
+      })
 }

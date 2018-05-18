@@ -15,13 +15,13 @@ export class SetAuthenticated implements Action {
 }
 export class AuthenticationSuccessAction implements Action {
   readonly type = AUTHENTICATED_SUCCESS;
-  constructor(public payload: { user: User }) {}
+  constructor(public  user?: User ) {}
 }
 
 
 export class SetUnauthenticated implements Action {
   readonly type = SET_UNAUTHENTICATED;
-  constructor(public payload: { user: User }) {}
+  constructor() {}
 }
 
 export class AuthenticatedError implements Action {

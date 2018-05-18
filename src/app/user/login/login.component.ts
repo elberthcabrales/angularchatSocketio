@@ -16,7 +16,7 @@ import {SetAuthenticated} from './../redux/user.actions'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading$:  Observable<boolean>;
-
+  isLoadingError$: Observable<string>;
 
 
   constructor(
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLoadingError$ = this.store.select(fromRoot.getAuthenticationError);
     this.loginForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email]

@@ -1,9 +1,9 @@
 import { Component ,OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { UIService } from './shared/ui.service';
+/*import { Store } from '@ngrx/store';
+import { UserService } from './user/user.service';
 import * as UI from './shared/ui.actions';
 import * as fromRoot from './app.reducer';
-
+*/
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,11 +11,11 @@ import * as fromRoot from './app.reducer';
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    this.store.dispatch(new UI.StartLoading());
+    
+
+    
   }
   constructor(
-    private uiService: UIService,
-    private store: Store<fromRoot.State>
   ){
 
   }
@@ -23,3 +23,10 @@ export class AppComponent implements OnInit {
   //title = 'app';
   
 }
+
+
+
+
+
+
+

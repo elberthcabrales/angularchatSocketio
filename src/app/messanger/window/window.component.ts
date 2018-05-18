@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../user/user.model';
+import { SocketService } from '../socket.service';
+
 
 @Component({
   selector: 'app-window',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WindowComponent implements OnInit {
 
-  constructor() { }
+  selectedUser:User;
+  constructor(private socketIo: SocketService) { }
 
   ngOnInit() {
+   
+  }
+  userReceived(event){
+    this.selectedUser = event;
+    //console.log(this.selectedUser)
+    this.socketIo.listMessages(event);
   }
 
 }

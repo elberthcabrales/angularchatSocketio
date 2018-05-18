@@ -1,9 +1,23 @@
-<div style="text-align:center">
-  <h1>
-   Windows Work!
-    <button mat-button>Click me!</button>
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap >
+  <div id="users" fxFlex="40" fxFlexOrder.xs="2"  >
+    <app-users fxFlex.xs="100"
+    (selected)="userReceived($event)"
+    ></app-users>
+  </div>
+
+  <div fxFlex="60%" fxFlexOrder.xs="1" class="contentMessages">
+  <div fxFlex="50%"  *ngIf="selectedUser" >{{selectedUser.username}}</div>
+    <div fxFlex="100" fxFlexOrder.xs="10" fxFlexOrder="1" class="messages">
+        <div class="message">mensaje 1</div>
+        <div class="message">mensaje 2</div>
+        <div class="message">mensaje 3</div>
+        <div class="message">mensaje 4</div>
+        <div class="message">mensaje 5</div>
+        <div class="message">mensaje 5</div>
+        <div class="message">mensaje 5</div>
+        <div class="message">mensaje 5</div>
+    </div>
+    <div fxFlex="100" fxFlexOrder.xs="10" fxFlexOrder="2" class="inputMessage">sss</div>
+  </div>
+  
 </div>
-<app-users></app-users>
-<app-message></app-message>

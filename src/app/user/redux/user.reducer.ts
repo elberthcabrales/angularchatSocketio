@@ -24,38 +24,37 @@ const initialState: State = {
 export function authReducer(state = initialState, action: UserActions) {
   switch (action.type) {
     case SET_AUTHENTICATED:
-      return {
+    return Object.assign({}, state,{
         isAuthenticated: true
-      };
+      });
     case SET_UNAUTHENTICATED:
-      return {
+    return Object.assign({}, state, {
         isAuthenticated: false
-      };
+      });
     case AUTHENTICATED_ERROR:
-      return {
+    return Object.assign({}, state, {
         isAuthenticated: false,
         error: action.error
-      };
+      });
     case SET_SINGUP:
       const user: User = action.payload.user;
       if (user === null) {
         return state;
       }
       return Object.assign({}, state, {
-        authenticated: true,
+        isAuthenticated: true,
         error: undefined,
         user: user
       });
     case SINGUP_ERROR:
       return Object.assign({}, state, {
-        authenticated: false,
+        isAuthenticated: false,
         error: action.error,
       });
     case AUTHENTICATED_SUCCESS:
     return Object.assign({}, state, {
-      authenticated:true,
-      loaded: true,
-      user: action.payload.user
+      isAuthenticated:true,
+      user: action.user
     });
     default: {
       return state;

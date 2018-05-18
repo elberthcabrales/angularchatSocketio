@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
-
 import 'hammerjs';
 import { AppComponent } from './app.component';
 import {MaterialModule} from './material.module';
@@ -16,13 +15,13 @@ import { NavigationComponent } from './navigation/navigation.component'
 import { reducers } from './app.reducer';
 import { UIService } from './shared/ui.service';
 import { StoreModule } from '@ngrx/store';
-import { UsersComponent } from './messanger/users/users.component';
-import { MessagesComponent } from './messanger/messages/message.component';
-import { WindowComponent } from './messanger/window/window.component'
+
 import {UserService} from './user/user.service';
 import {HttpModule} from '@angular/http';
 import { EffectsModule } from '@ngrx/effects';
 import {UserEffects} from './user/redux/user.effect'
+import {AuthenticatedGuard} from './authenticated.guard';
+import {MessengerModule} from './messanger/messenger.module'
 
 @NgModule({
   declarations: [
@@ -30,15 +29,13 @@ import {UserEffects} from './user/redux/user.effect'
     LoginComponent,
     SignupComponent,
     NotfoundComponent,
-    NavigationComponent,
-    UsersComponent,
-    MessagesComponent,
-    WindowComponent
+    NavigationComponent   
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpModule,
+    MessengerModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -47,7 +44,7 @@ import {UserEffects} from './user/redux/user.effect'
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([UserEffects]),
   ],
-  providers: [UIService,UserService],
+  providers: [UIService,UserService, AuthenticatedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

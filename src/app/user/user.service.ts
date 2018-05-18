@@ -47,7 +47,13 @@ export class UserService {
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.baseUrl+'login',authData,options);
   }
-
+  checkSession(token:string){
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization':token});
+    const options = new RequestOptions({ headers: headers });
+    return this.http.get(this.baseUrl+'check',options);
+  }
   logout() : Observable<boolean> {
     localStorage.removeItem('token');
     localStorage.clear();

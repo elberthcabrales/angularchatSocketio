@@ -1,0 +1,21 @@
+
+mat-list-item:hover{
+  cursor: pointer;
+}
+.example-card{
+  margin: 30px;
+}
+mat-list {
+  flex-grow: 1;
+  overflow: auto;
+  max-height: 340px;
+}
+
+.example-form {
+ margin: 0 10px;
+  width: 90%;
+}
+
+.example-full-width {
+  width: 100%;
+}

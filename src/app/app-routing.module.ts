@@ -4,11 +4,16 @@ import {LoginComponent} from './user/login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SignupComponent } from './user/signup/signup.component';
 import {WindowComponent} from './messanger/window/window.component'
+import { AuthenticatedGuard } from "./authenticated.guard";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent},
-    { path: 'messenger', component: WindowComponent },
+    {
+       canActivate: [AuthenticatedGuard],
+       path: 'messenger',
+       component: WindowComponent 
+    },
     { path: '**', component: NotfoundComponent}
   ];
   
