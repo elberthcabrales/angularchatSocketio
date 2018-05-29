@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from './../../app.reducer';
 import { UserService } from '../user.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private uiService: UIService,
     private store: Store<fromRoot.State>,
-    private userService :UserService
+    private userService :UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -43,10 +45,13 @@ export class SignupComponent implements OnInit {
     username: this.signupForm.value.username,
     password : this.signupForm.value.password
   }).subscribe((response)=>{
-    console.log(response);
+    alert(response.message)
+    this.signupForm.reset();
+    this.router.navigate(['/messenger']);
     },
     err=>{
-      console.log(err)
+      alert(err)
   })
+  
  }
 }

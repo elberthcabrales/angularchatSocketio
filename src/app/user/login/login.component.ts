@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //vaslidar si existe un token debemos de mandarlo al dasbord
     this.isLoadingError$ = this.store.select(fromRoot.getAuthenticationError);
     this.loginForm = new FormGroup({
       email: new FormControl('', {

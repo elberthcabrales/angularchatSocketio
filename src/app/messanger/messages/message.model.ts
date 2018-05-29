@@ -1,7 +1,7 @@
-export interface Message{
+export interface MessagePrivate{
     id?:string;
     text:string;
-    from:string;
+    from?:string;
     to:string;
     created?:Date;
     visto?:boolean;

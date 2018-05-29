@@ -1,0 +1,13 @@
+
+.message{
+    background-color: rgb(197, 197, 245);
+    margin: 10px;
+    height: 60px;
+    ruby-align: right;
+}
+
+.hismsg{
+    background-color: rgb(146, 189, 148);
+    text-align: right;
+}
+  

@@ -7,6 +7,7 @@ import { MaterialModule } from './../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketService } from './socket.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StopComponent } from './stop/stop.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +19,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     UsersComponent,
     MessagesComponent,
-    WindowComponent
+    WindowComponent,
+    StopComponent   
   ],
   providers:[SocketService]
 })

@@ -1,27 +1,25 @@
 .contentMessages{
- background-color: blanchedalmond;
+
 }
 .messages{
-    background-color: blueviolet;
+    background-color: rgb(229, 216, 241);
     margin: 20px;
     height: 420px;
      flex-grow: 1;
   overflow: auto;
 }
-.inputMessage{
-    background-color: chocolate;
-    height: 100px;
-    margin: 0px 10px;
-}
-.message{
-    background-color: blue;
-    margin: 10px;
-    height: 60px;
-}
+
+
 .currrent-user{
     color: #253c93;
 	text-decoration: none;
     border-bottom: 1px dotted #253c93;
     font-size:30;
-    
 }
+
+  .example-full-width {
+    background-color: rgb(236, 233, 230);
+    height: 60px;
+    margin: 0px 10px;
+    width: 98%;
+  }

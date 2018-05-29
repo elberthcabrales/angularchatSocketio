@@ -24,7 +24,7 @@ export class NavigationComponent implements OnInit{
   constructor(
     private store: Store<fromRoot.State>,
     private userService :UserService,
-    private router: Router,
+    private router: Router
    ) { }
 
 ngOnInit() {
@@ -38,7 +38,6 @@ ngOnInit() {
       
       this.userService.checkSession(token.toString()).subscribe((res)=>{
         if(res.status==200){
-         // console.log(res.json())
           this.store.dispatch(new UserActionTypes.AuthenticationSuccessAction(res.json()));
           this.router.navigate(['/messenger'])
         }

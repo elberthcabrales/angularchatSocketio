@@ -5,18 +5,17 @@
   <mat-divider></mat-divider>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let item of (users$|async)" (click)="selectUser(item)">
+      <mat-list-item *ngFor="let item of users" (click)="selectUser(item)">
       {{item.username}}
-        <mat-icon matSuffix *ngIf="item.status==='online'">favorite</mat-icon>
-         <mat-icon matSuffix *ngIf="item.status==='offline'">face</mat-icon>
+         <mat-icon matSuffix *ngIf="item.status==='online'">favorite</mat-icon>
+         <mat-icon matSuffix *ngIf="item.status!=='online'">face</mat-icon>
       <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
  <mat-card-footer>
     <form class="example-form"
-      [formGroup]="searchForm"
-      (ngSubmit)="onSubmit()">
+      [formGroup]="searchForm">
       <mat-form-field class="example-full-width">
         <input
           type="text"
@@ -30,3 +29,6 @@
   </form>
   </mat-card-footer>
 </mat-card>
+{{currentuser.username}}
+
+<app-stop [hidden]="hide"></app-stop>

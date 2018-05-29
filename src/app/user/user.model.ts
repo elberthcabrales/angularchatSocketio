@@ -4,7 +4,7 @@ export interface User {
     username: string;
     socketId?: string;
     password?:string;
-    status?:boolean;
+    status?:string;
     created?: Date; 
   }
   

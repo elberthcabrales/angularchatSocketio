@@ -44,9 +44,9 @@ export class UserEffects {
         password:action.payload.password})
         .map((user) => {
           localStorage.setItem('token',user.json().token);
-          this.router.navigate(['/messenger']);
-          return new UserActionTypes.AuthenticationSuccessAction(user.json())
+          return new UserActionTypes.AuthenticationSuccessAction(user.json().user)
         })
+        .do(()=>  this.router.navigate(['/messenger']))
         .do(()=> this.store.dispatch(new UiActionTypes.StopLoading()))
         .catch(error => Observable.of(new UserActionTypes.AuthenticatedError({error: error.message})));
     });

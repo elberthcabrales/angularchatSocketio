@@ -16,6 +16,7 @@ import { reducers } from './app.reducer';
 import { UIService } from './shared/ui.service';
 import { StoreModule } from '@ngrx/store';
 
+
 import {UserService} from './user/user.service';
 import {HttpModule} from '@angular/http';
 import { EffectsModule } from '@ngrx/effects';
@@ -23,13 +24,17 @@ import {UserEffects} from './user/redux/user.effect'
 import {AuthenticatedGuard} from './authenticated.guard';
 import {MessengerModule} from './messanger/messenger.module'
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     NotfoundComponent,
-    NavigationComponent   
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ import {MessengerModule} from './messanger/messenger.module'
     MaterialModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 //  Retains last 25 states
+    }),
     EffectsModule.forRoot([UserEffects]),
   ],
   providers: [UIService,UserService, AuthenticatedGuard],
