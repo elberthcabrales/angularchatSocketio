@@ -68,12 +68,19 @@ export class SocketService {
     this.usersSource.next(data);
   }
   updateStatus(dataset:User[],e:User,callback){
-    let updated=this.dataset.map(u=>{
-      if(u.id===e.id){
-        return e
-      }
-      return u;
-    })
+   let updated;
+    if(!this.dataset.find(u=>u.id==e.id)){
+      debugger
+      updated = [...this.dataset,e];
+  
+    }else{
+      updated=this.dataset.map(u=>{
+        if(u.id===e.id){
+          return e
+        }
+        return u;
+      })
+    }
     callback(updated);
   }
 
